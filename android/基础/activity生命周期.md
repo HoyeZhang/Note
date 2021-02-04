@@ -8,3 +8,13 @@
 - onDestroy: 表示activity即将被销毁。可在此处做回收工作以及最终资源的释放。
 - onNewIntent：有特殊启动模式如singleTop等，存在activity实例时再打开新activity时不会调用oncerate方法，会走onNewIntent方法。
 #异常情况下的生命周期  #
+
+
+# 相关扩展
+## a 启动b activity 的生命周期变化
+-   Main.onCreate()---->Main.onStart()---->Main.onResume()-----“点击按钮，开启一个新的Activity”------>Main.onPause()---------> Second.onCreate()----> Second.onStart()----> Second.onResume()---->Main.onStop()-------“到此，MainActivity  启动  SecondActivity 过程中就执行完毕”
+## 点击Back按钮 回到前一个Activity  ，生命周期变化
+- “点击Back按钮”--------->Second.onPause()---->Main.onReStart()---->Main.onStart()---->Main.onResume()---->Second.onStop()---->Second.onDestory()
+
+## 启动一个dialog，activity的生命周期
+- 无变化，除非是启动一个activity的dialog，activity的生命周期相当于activity
